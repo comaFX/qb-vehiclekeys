@@ -1,6 +1,6 @@
 Config = {}
 	Config.UseDiffLockpicks = true  -- if set to true, vehicles not included in Config.BasicLockpickVehicles will require an advanced lockpick
-	Config.VehiclesNoLockpick = false -- if set to true, vehicles in Config.NoLockpickVehicles can be broken into without using a lockpick
+	Config.VehiclesNoLockpick = false -- if set to true, parked vehicles in Config.NoLockpickVehicles can be broken into without using a lockpick
 	Config.LockNPCDrivingCars = true
 	Config.LockNPCParkedCars = true
 	Config.UseKeyfob = true
