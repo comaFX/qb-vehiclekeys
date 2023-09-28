@@ -72,13 +72,11 @@ local function robKeyLoop()
 						QBCore.Functions.TriggerCallback('qb-vehiclekeys:server:checkPlayerOwned', function(playerOwned)
 							if not playerOwned then
 								if Config.LockNPCParkedCars then
-									--coma
 									if Config.VehiclesNoLockpick then 
-										local vehicle = QBCore.Functions.GetClosestVehicle()
 										local NoLockpickVeh = false
-										if vehicle ~= nil then
+										if entering ~= nil then
 											for _, v in pairs(Config.NoLockpickVehicles) do
-												if GetEntityModel(vehicle) == GetHashKey(v) then
+												if GetEntityModel(entering) == GetHashKey(v) then
 													NoLockpickVeh = true
 												end
 											end
@@ -478,6 +476,7 @@ function ToggleVehicleunLocks(veh)
 		end
 	end
 end
+
 function ToggleVehicleTrunk(veh)
 	if veh then
 		if not isBlacklistedVehicle(veh) then
@@ -523,6 +522,7 @@ function ToggleVehicleTrunk(veh)
 		end
 	end
 end
+
 function GetOtherPlayersInVehicle(vehicle)
 	local otherPeds = {}
 	for seat=-1,GetVehicleModelNumberOfSeats(GetEntityModel(vehicle))-2 do
@@ -566,39 +566,33 @@ function LockpickDoor(isAdvanced)
 	if HasKeys(QBCore.Functions.GetPlate(vehicle)) then return end
 	if #(pos - GetEntityCoords(vehicle)) > 2.5 then return end
 	if GetVehicleDoorLockStatus(vehicle) <= 0 then return end
-	
 	usingAdvanced = isAdvanced
 
 	if Config.UseDiffLockpicks then
 		local BasicLockpickVeh = false
-		if vehicle ~= nil then
-			for _, v in pairs(Config.BasicLockpickVehicles) do
-				if GetEntityModel(vehicle) == GetHashKey(v) then
-					BasicLockpickVeh = true
+			if vehicle ~= nil then
+				for _, v in pairs(Config.BasicLockpickVehicles) do
+					if GetEntityModel(vehicle) == GetHashKey(v) then
+						BasicLockpickVeh = true
+					end
 				end
 			end
-		end
-
-		if isAdvanced == false then
-			if BasicLockpickVeh == true then
-				Config.LockPickDoorEvent()
+			if isAdvanced == false then
+				if BasicLockpickVeh == true then
+					Config.LockPickDoorEvent()
+				else
+					TriggerEvent("QBCore:Notify", "You need a more advanced lockpick for this vehicle!", "error")
+				end
 			else
-				TriggerEvent("QBCore:Notify", "You need a more advanced lockpick for this vehicle!", "error")
-			end
-		end
-
-		if isAdvanced == true then
-			if BasicLockpickVeh == true then
-				TriggerEvent("QBCore:Notify", "You need a less advanced lockpick for this vehicle!", "error")
-			else
-				Config.AdvancedLockPickDoorEvent()
-			end
-
-		end	
+				if BasicLockpickVeh == true then
+					TriggerEvent("QBCore:Notify", "You need a less advanced lockpick for this vehicle!", "error")
+				else
+					Config.AdvancedLockPickDoorEvent()
+				end
+			end	
 	else -- Don't use different lockpicks
 		Config.LockPickDoorEvent()
 	end
-
 end
 
 function LockpickFinishCallback(success)
