@@ -10,4 +10,4 @@ Modified [Vehicle Keys System For QB-Core](https://github.com/qbcore-framework/q
 
 * Config.UseDiffLockpicks - if set to true, vehicles not included in Config.BasicLockpickVehicles will require an advanced lockpick.
 
-* Config.VehiclesNoLockpick - if set to true, vehicles in Config.NoLockpickVehicles can be broken into without using a lockpick. (You're still require to "search for keys" or hotwire the vehcile)
+* Config.VehiclesNoLockpick - if set to true, vehicles in Config.NoLockpickVehicles can be broken into without using a lockpick. (You're still required to "search for keys" or hotwire the vehcile)
