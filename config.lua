@@ -87,15 +87,11 @@ Config.ImmuneVehicles = {
 
 --Vehicles that require a basic lockpick to break into. ALL OTHERS WILL REQUIRE AN ADVANCED LOCKPICK.
 Config.BasicLockpickVehicles = {
-
 }
 
---coma
-Config.NoLockpickVehicles = { -- Parked vehicles in this list will NOT REQUIRE A LOCKPICK to break into. You still have to search for keys or hotwire.
-
+-- Parked vehicles in this list will NOT REQUIRE A LOCKPICK to break into. You still have to search for keys or hotwire.
+Config.NoLockpickVehicles = { 
 }
---coma
-
 
 --Replace QBCore lockpick with PS-UI Circle Minigame by Project Sloth
 Config.LockPickDoorEvent = function()
