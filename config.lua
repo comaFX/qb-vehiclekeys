@@ -317,7 +317,7 @@ Config.LockPickDoorEvent = function()
 		end
 	end, 5, 20) -- circles - ms
 end
-	
+--Replace QBCore lockpick with PS-UI Scrambler Minigame by Project Sloth	
 Config.AdvancedLockPickDoorEvent = function()
 	loadAnimDict("veh@break_in@0h@p_m_one@")
 	TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
