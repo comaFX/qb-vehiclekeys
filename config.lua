@@ -321,7 +321,6 @@ end
 Config.AdvancedLockPickDoorEvent = function()
 	loadAnimDict("veh@break_in@0h@p_m_one@")
 	TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
-	--exports['ps-ui']:Circle(function(success)
 	exports['ps-ui']:Scrambler(function(success)
 		if success then
 			LockpickFinishCallback(success)
