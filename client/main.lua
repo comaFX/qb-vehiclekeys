@@ -317,21 +317,25 @@ function ToggleVehicleLockswithoutnui(veh)
 			if HasKeys(QBCore.Functions.GetPlate(veh)) or AreKeysJobShared(veh) then
 				local ped = PlayerPedId()
 				local vehLockStatus = GetVehicleDoorLockStatus(veh)
-
+--[[
 				if not GetVehiclePedIsIn(ped) then
 					loadAnimDict("anim@mp_player_intmenu@key_fob@")
 					TaskPlayAnim(ped, 'anim@mp_player_intmenu@key_fob@', 'fob_click', 3.0, 3.0, -1, 49, 0, false, false, false)
 				end
-
+--]]
 				TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 5, "lock", 0.3)
 
 				NetworkRequestControlOfEntity(veh)
 				if vehLockStatus == 1 then
 					TriggerServerEvent('qb-vehiclekeys:server:setVehLockState', NetworkGetNetworkIdFromEntity(veh), 2)
 					QBCore.Functions.Notify(Lang:t("notify.vlock"), "primary")
+					loadAnimDict("anim@mp_player_intmenu@key_fob@")
+					TaskPlayAnim(ped, 'anim@mp_player_intmenu@key_fob@', 'fob_click', 3.0, 3.0, -1, 49, 0, false, false, false)
 				else
 					TriggerServerEvent('qb-vehiclekeys:server:setVehLockState', NetworkGetNetworkIdFromEntity(veh), 1)
 					QBCore.Functions.Notify(Lang:t("notify.vunlock"), "success")
+					loadAnimDict("anim@mp_player_intmenu@key_fob@")
+					TaskPlayAnim(ped, 'anim@mp_player_intmenu@key_fob@', 'fob_click', 3.0, 3.0, -1, 49, 0, false, false, false)
 				end
 
 				SetVehicleLights(veh, 2)
